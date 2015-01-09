@@ -1,0 +1,11 @@
+--- configure/CONFIG_COMMON	2013-12-16 16:56:27.000000000 -0500
++++ configure/CONFIG_COMMON	2015-01-09 09:44:19.000000000 -0500
+@@ -189,7 +189,7 @@
+ ARCH_DEP_CPPFLAGS =
+ ARCH_DEP_CFLAGS =
+ ARCH_DEP_CXXFLAGS = $(ARCH_DEP_CFLAGS)
+-ARCH_DEP_LDFLAGS =
++ARCH_DEP_LDFLAGS = -L/Users/klauer/miniconda3/lib
+ ARCH_DEP_LDLIBS =
+ 
+ # Target operating system specific flags

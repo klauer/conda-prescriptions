@@ -1,7 +1,8 @@
 #!/bin/bash
 
 export EPICS_BASE=$PREFIX/lib/epics
-export EPICS_HOST_ARCH=linux-x86_64
+# export EPICS_HOST_ARCH=linux-x86_64
+export EPICS_HOST_ARCH=darwin-x86
 $PYTHON setup.py build
 $PYTHON setup.py install
 
