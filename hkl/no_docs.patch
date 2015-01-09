@@ -1,0 +1,38 @@
+diff --git a/Makefile.am b/Makefile.am
+index e804570..1f32a52 100644
+--- Makefile.am
++++ Makefile.am
+@@ -10,7 +10,7 @@ endif
+ if GUI
+ SUBDIRS += gui
+ endif
+-SUBDIRS += tests Documentation
++SUBDIRS += tests
+ 
+ EXTRA_DIST = hkl.pc.in hkl3d.pc.in
+ 
+diff --git a/configure.ac b/configure.ac
+index 50375c8..47b646e 100644
+--- configure.ac
++++ configure.ac
+@@ -126,7 +126,7 @@ dnl ***************
+ dnl *** gtk-doc ***
+ dnl ***************
+ 
+-GTK_DOC_CHECK([1.9],[--flavour no-tmpl])
++dnl GTK_DOC_CHECK([1.9],[--flavour no-tmpl])
+ 
+ dnl ***********
+ dnl *** asy ***
+@@ -280,11 +280,6 @@ AC_CONFIG_FILES([Makefile
+ 		 tests/Makefile
+ 		 tests/bindings/Makefile
+ 		 tests/tap/Makefile
+-		 Documentation/Makefile
+-		 Documentation/api/Makefile
+-		 Documentation/figures/Makefile
+-		 Documentation/sphinx/Makefile
+-		 Documentation/sphinx/source/conf.py
+ 		 gui/Makefile
+ 		 data/Makefile
+ ])

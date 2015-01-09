@@ -1,0 +1,20 @@
+diff --git a/hkl/ccan/autodata/autodata.h b/hkl/ccan/autodata/autodata.h
+index f94fa74..eaeb21b 100644
+--- hkl/ccan/autodata/autodata.h
++++ hkl/ccan/autodata/autodata.h
+@@ -40,9 +40,14 @@
+  *	AUTODATA(names, "Arabella");
+  *	AUTODATA(names, "Alex");
+  */
++
++// osx error:
++// error: argument to 'section' attribute is not valid for
++//        this target: mach-o section specifier requires a segment and section separated by a comma
++// plus, has to be from 1-16 chars total
+ #define AUTODATA(name, ptr) \
+ 	static const autodata_##name##_ *NEEDED		\
+-	__attribute__((section("xautodata_" #name)))	\
++	__attribute__((section(".x,x" #name)))	\
+ 	AUTODATA_VAR_(name, __LINE__) = (ptr);
+ 
+ /**
