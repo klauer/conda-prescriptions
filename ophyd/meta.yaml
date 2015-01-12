@@ -27,12 +27,14 @@ requirements:
       - metadatastore
       - pyolog
       - pcaspy
+      - hkl
 
 test:
   # Python imports
   imports:
     - ophyd
     - ophyd.controls
+    - ophyd.controls.cas
     - ophyd.controls.areadetector
     - ophyd.runengine
     - ophyd.session
