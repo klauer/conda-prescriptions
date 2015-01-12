@@ -13,7 +13,9 @@ build:
 requirements:
   build:
     - python
+    - glib
   run:
+    - python
     - glib
 
 about:

@@ -8,7 +8,6 @@ source:
     
     patches:
         - no_docs.patch
-        - autodata_osx.patch
 build:
   number: 0
 
@@ -17,6 +16,10 @@ requirements:
     - python
     - gobject-introspection
     - gsl
+  run:
+    - python
+    - pygobject
+    - numpy
 
 about:
   home: http://repo.or.cz/w/hkl.git/
