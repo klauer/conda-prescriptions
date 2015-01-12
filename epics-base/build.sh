@@ -1,9 +1,8 @@
 #!/bin/bash
 
 if [ "$(uname)" == "Darwin" ]; then
-    echo "Setting OSX DYLD_FALLBACK_LIBRARY_PATH (TODO see source)"
-    # TODO: no environment variable for conda path?
-    export DYLD_FALLBACK_LIBRARY_PATH="/Users/klauer/miniconda3/lib"
+    echo "Setting OSX DYLD_FALLBACK_LIBRARY_PATH"
+    export DYLD_FALLBACK_LIBRARY_PATH="$PREFIX/lib"
     # TODO cp flags differ, -P is default with -r, but can't be specified somehow
     CP_FLAGS="-rv"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
