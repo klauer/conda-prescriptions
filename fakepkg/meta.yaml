@@ -1,0 +1,18 @@
+package:
+  name: fakepkg
+  version: 0
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+app:
+    # TODO: right location?
+    environment_scripts:
+        - activate.sh # [unix]
+        - deactivate.sh # [unix]
