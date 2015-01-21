@@ -6,8 +6,6 @@ source:
     git_url: https://github.com/picca/hkl
     git_rev: next
     
-    patches:
-        - no_docs.patch
 build:
   number: 0
 
