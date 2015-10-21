@@ -1,0 +1,26 @@
+package:
+  name: epics-synapps
+  version: R5_8
+
+source:
+  git_url: https://github.com/epicsdeb/synapps.git
+  git_rev: 'debian/20141009-1'
+  #git_rev: master
+
+build:
+  number: 10
+  detect_binary_files_with_prefix: 1
+
+requirements:
+  build:
+    - epics-base >=3.14.12.5
+    - readline
+
+  run:
+    - epics-base
+    - readline
+
+about:
+    home: https://github.com/epicsdeb/synapps
+    license: Epics Open License
+    summary: synApps is a collection of software tools that help to create a control system for beamlines.  Based on BNL patched version.
