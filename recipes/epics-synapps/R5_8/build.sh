@@ -49,8 +49,14 @@ rm -rf areaDetector* ADCore* ADBin* ip330* ipac* ipUnidig* modbus* quadEM* sscan
 rm -rf dac128* softGlue* delaygen* dxp* vme* allenBradley* mca* measComp*
 
 make release
-echo "make release done"
 make -j30
-echo "parallel build completed"
 make
-echo "other build completed"
+
+# install this way because I can't figure out how to do it properly
+
+find . -type f -name "*.a" -exec cp {} $PREFIX/lib/ \;
+find . -type f -name "*.so" -exec cp {} $PREFIX/lib/ \;
+find . -type f -name "*.a" -exec cp {} $PREFIX/epics/lib/$EPICS_HOST_ARCH/ \;
+find . -type f -name "*.so" -exec cp {} $PREFIX/epics/lib/$EPICS_HOST_ARCH/ \;
+find . -type d -name "dbd" -exec /bin/bash -c "cp {}/*.dbd $PREFIX/epics/dbd" \;
+find . -type d -name "db" -exec /bin/bash -c "cp {}/*.db $PREFIX/epics/db" \;
