@@ -3,24 +3,27 @@ package:
   version: R5_8
 
 source:
-  git_url: https://github.com/epicsdeb/synapps.git
-  git_rev: 'debian/20141009-1'
-  #git_rev: master
+  fn: synApps_5_8.tar.gz
+  url: http://www.aps.anl.gov/bcda/synApps/tar/synApps_5_8.tar.gz
+  md5: aadd9488337cc4ad8dc8254dbd9fa896
 
 build:
-  number: 10
+  number: 0
   detect_binary_files_with_prefix: 1
 
 requirements:
   build:
     - epics-base >=3.14.12.5
     - readline
+    # might need this too... or we could just install it on the build machine
+    # and forget about it!
+    - re2c
 
   run:
-    - epics-base
+    - epics-base >=3.14.12.5
     - readline
 
 about:
-    home: https://github.com/epicsdeb/synapps
+    home: http://www.aps.anl.gov/bcda/synApps
     license: Epics Open License
     summary: synApps is a collection of software tools that help to create a control system for beamlines.  Based on BNL patched version.
