@@ -17,7 +17,7 @@ requirements:
     - readline
     # might need this too... or we could just install it on the build machine
     # and forget about it!
-    - re2c
+    #- re2c
 
   run:
     - epics-base >=3.14.12.5
@@ -26,4 +26,4 @@ requirements:
 about:
     home: http://www.aps.anl.gov/bcda/synApps
     license: Epics Open License
-    summary: synApps is a collection of software tools that help to create a control system for beamlines.  Based on BNL patched version.
+    summary: synApps is a collection of software tools that help to create a control system for beamlines.
