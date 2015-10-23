@@ -1,36 +1,29 @@
 #!/bin/bash
 
-# set the epics base path
-sed -i 's|^EPICS_BASE\s*=.*$|EPICS_BASE = '$EPICS_BASE'|g' configure/RELEASE
+pushd support
 
-# set the support directory path
+echo "Fixing RELEASE files..."
+# set the epics base path and synapps path
+sed -i 's|^EPICS_BASE\s*=.*$|EPICS_BASE = '$EPICS_BASE'|g' configure/RELEASE
 sed -i 's|^SUPPORT\s*=.*$|SUPPORT = '$PWD'|g' configure/RELEASE
 
-# sed -i 's|^AREA_DETECTOR|# AREA_DETECTOR|g' configure/RELEASE
-sed -i 's|^ADCORE|# ADCORE|g' configure/RELEASE
-sed -i 's|^ADBINARIES|# ADBINARIES|g' configure/RELEASE
-sed -i 's|^IP330|# IP330|g' configure/RELEASE
-sed -i 's|^IPAC|# IPAC|g' configure/RELEASE
-sed -i 's|^IPUNIDIG|# IPUNIDIG|g' configure/RELEASE
-sed -i 's|^MODBUS|# MODBUS|g' configure/RELEASE
-sed -i 's|^QUADEM|# QUADEM|g' configure/RELEASE
-sed -i 's|^SSCAN|# SSCAN|g' configure/RELEASE
-sed -i 's|^DAC128V|# DAC128V|g' configure/RELEASE
-sed -i 's|^SOFTGLUE|# SOFTGLUE|g' configure/RELEASE
-sed -i 's|^DELAYGEN|# DELAYGEN|g' configure/RELEASE
-sed -i 's|^DXP|# DXP|g' configure/RELEASE
-sed -i 's|^VME|# VME|g' configure/RELEASE
-sed -i 's|^ALLEN_BRADLEY|# ALLEN_BRADLEY|g' configure/RELEASE
-sed -i 's|^MCA|# MCA|g' configure/RELEASE
-sed -i 's|^MEASCOMP|# MEASCOMP|g' configure/RELEASE
+declare -a ignore_modules=('ADCORE' 'ADBINARIES' 'IP330' 'IPAC' 'IPUNIDIG'
+                           'MODBUS' 'QUADEM' 'SSCAN' 'DAC128V' 'SOFTGLUE'
+                           'DELAYGEN' 'DXP' 'VME'
+                           'ALLEN_BRADLEY' 'MCA' 'MEASCOMP')
 
-sed -i 's|^SSCAN|# SSCAN|g' calc-*/configure/RELEASE
-sed -i 's|^IPAC|# IPAC|g' asyn-*/configure/RELEASE
-sed -i 's|^IPAC|# IPAC|g' motor-*/configure/RELEASE
 
+release_files=$(find . -name RELEASE -type f)
+
+# Don't build hytec motor support
 sed -i 's|^.*Hytec.*$||g' motor-*/motorApp/Makefile
 
-rm -rf ip330* ipac* ipUnidig* modbus* quadEM* sscan*
-rm -rf dac128* softGlue* delaygen* dxp* vme* allenBradley* mca* measComp*
+for ignore in "${ignore_modules[@]}" 
+do
+    sed -i 's|^'${ignore}'\s*=|# '${ignore}='|g' ${release_files}
+done
 
+echo "Copying RELEASE to subdirectories"
 make release
+
+popd
