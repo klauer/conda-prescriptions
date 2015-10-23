@@ -8,7 +8,15 @@ source ${RECIPE_DIR}/fix_release.sh
 
 pushd support
 make -j $CPU_COUNT
-make
+if [ $? -ne 0 ]; then
+    echo "Parallel build failed; trying single process build"
+    make
+    if [ $? -ne 0 ]; then
+        echo "Build failed"
+        exit 1
+    fi
+fi
+
 popd
 
 # install this way because I can't figure out how to do it properly
