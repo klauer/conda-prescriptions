@@ -8,13 +8,16 @@ source:
   md5: aadd9488337cc4ad8dc8254dbd9fa896
 
 build:
-  number: 2
+  number: 3
   detect_binary_files_with_prefix: 1
 
 requirements:
   build:
     - epics-base >=3.14.12.5
     - readline
+    - hdf5
+    - szip
+    - libxml2
     # might need this too... or we could just install it on the build machine
     # and forget about it!
     #- re2c

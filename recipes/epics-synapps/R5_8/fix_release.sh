@@ -7,7 +7,7 @@ echo "Fixing RELEASE files..."
 sed -i 's|^EPICS_BASE\s*=.*$|EPICS_BASE = '$EPICS_BASE'|g' configure/RELEASE
 sed -i 's|^SUPPORT\s*=.*$|SUPPORT = '$PWD'|g' configure/RELEASE
 
-declare -a ignore_modules=('ADCORE' 'ADBINARIES' 'IP330' 'IPAC' 'IPUNIDIG'
+declare -a ignore_modules=('IP330' 'IPAC' 'IPUNIDIG'
                            'MODBUS' 'QUADEM' 'DAC128V' 'SOFTGLUE'
                            'DELAYGEN' 'DXP' 'VME'
                            'ALLEN_BRADLEY' 'MCA' 'MEASCOMP')
